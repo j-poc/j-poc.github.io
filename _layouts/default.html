@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#fbfaf7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121412" media="(prefers-color-scheme: dark)">
+  {% assign page_title = page.title | default: site.title %}
+  {% if page.url == "/" %}
+    {% assign full_title = "Holdout: are you named when buyers ask AI who to choose?" %}
+  {% elsif page_title == site.title %}
+    {% assign full_title = site.title %}
+  {% else %}
+    {% assign full_title = page_title | append: " | Holdout" %}
+  {% endif %}
+  {% assign desc = page.description | default: content | strip_html | normalize_whitespace | truncate: 160 | default: site.description %}
+  {% assign canonical = page.url | replace: "index.html", "" | absolute_url %}
+  <title>{{ full_title | escape }}</title>
+  <meta name="description" content="{{ desc | escape }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <meta property="og:site_name" content="Holdout">
+  <meta property="og:type" content="{% if page.url == '/' %}website{% else %}article{% endif %}">
+  <meta property="og:title" content="{{ full_title | escape }}">
+  <meta property="og:description" content="{{ desc | escape }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:image" content="{{ '/assets/og.png' | absolute_url }}">
+  <meta property="og:image:alt" content="Holdout: measured, fixed, proven.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ full_title | escape }}">
+  <meta name="twitter:description" content="{{ desc | escape }}">
+  <meta name="twitter:image" content="{{ '/assets/og.png' | absolute_url }}">
+  <link rel="icon" href="{{ '/assets/icon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
+  {% include jsonld.html %}
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <p class="notice" role="note"><strong>Holdout has not launched yet.</strong> Sign-up is coming soon. Nothing on this site can be bought today.</p>
+  <header class="site-header">
+    <div class="wrap bar">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="Holdout, home"><span class="mark" aria-hidden="true"></span>Holdout</a>
+      <nav aria-label="Main">
+        <ul>
+          {% for item in site.data.nav %}
+          <li><a href="{{ item.url | relative_url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.title }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap">
+    {% unless page.no_title %}
+    <h1 class="page-title">{{ page_title }}</h1>
+    {% endunless %}
+    <div class="prose">
+{{ content }}
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap foot">
+      <div>
+        <p class="brand"><span class="mark" aria-hidden="true"></span>Holdout</p>
+        <p class="muted">Measured. Fixed. Proven. We never promise that AI will name you.</p>
+        <p class="muted">Holdout has not launched yet. Sign-up is coming soon.</p>
+      </div>
+      <nav aria-label="Footer">
+        <ul>
+          {% for item in site.data.nav %}
+          <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+          {% endfor %}
+          <li><a href="{{ '/sitemap.xml' | relative_url }}">Sitemap</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

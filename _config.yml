@@ -1,0 +1,29 @@
+title: Holdout
+description: Holdout checks how often AI names your company when buyers ask who to choose, fixes what it can each week, and proves whether it worked. Not launched yet.
+url: https://j-poc.github.io
+baseurl: ""
+lang: en
+markdown: kramdown
+permalink: pretty
+
+plugins:
+  - jekyll-sitemap
+
+titles_from_headings:
+  enabled: true
+  strip_title: true
+
+defaults:
+  # Any other page without its own layout gets _layouts/default.html from jekyll-default-layout (on by default).
+  # Files that Holdout adds to content/ are served at /<name>/, the address its live check fetches.
+  - scope:
+      path: "content"
+    values:
+      layout: default
+      permalink: /:basename/
+
+exclude:
+  - README.md
+  - LICENSE
+  - Gemfile
+  - Gemfile.lock

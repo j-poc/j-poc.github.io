@@ -1,0 +1,30 @@
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ site.url }}/#org",
+      "name": "Holdout",
+      "url": "{{ site.url }}/",
+      "description": "Holdout checks how often AI names a company when buyers ask who to choose, and tests whether its fixes worked."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "{{ site.url }}/#app",
+      "name": "Holdout",
+      "url": "{{ site.url }}/",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "Measures how often AI names a company when buyers ask who to choose, ships checked fixes every week, and tests the lift against a holdout set of questions. Not launched yet.",
+      "publisher": { "@id": "{{ site.url }}/#org" },
+      "offers": [
+        { "@type": "Offer", "name": "Holdout", "price": "199", "priceCurrency": "USD", "description": "Per month. 24 buyer questions measured every week on the first AI engine we have set up, up to 5 fixes a week. Not launched yet." },
+        { "@type": "Offer", "name": "Holdout Growth", "price": "599", "priceCurrency": "USD", "description": "Per month. 60 buyer questions measured every week on every AI engine we have set up, up to 15 fixes a week. Not launched yet." },
+        { "@type": "Offer", "name": "Holdout for agencies", "price": "99", "priceCurrency": "USD", "description": "Per client per month, minimum 3 clients ($297 a month). Not launched yet." },
+        { "@type": "Offer", "name": "Holdout API and MCP", "price": "0.015", "priceCurrency": "USD", "description": "Per measured answer, no monthly minimum. Not launched yet." }
+      ]
+    }
+  ]
+}
+</script>
